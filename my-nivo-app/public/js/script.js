@@ -1088,14 +1088,15 @@ var temp=d3.select('#donut')    // select the div element with the id 'donut'
 .append('svg')  // append an svg element
 .attr('class', 'pie'); // add a class to the svg element
 
-function pie2() // function to draw the pie chart
-{
-    d3.select("#donut").selectAll("svg").remove(); // remove the existing svg element
-    
-    // Setting the dimensions of the pie chart
+// function to add another chart
+function add_pie() {
+    // if the pie_added class is present then remove the svg element
+    if (d3.select('.pie_added')) {
+        d3.select('.pie_added').remove();
+    }
     var width = 360;
     var height = 360;
-    var radius = Math.min(width, height) / 2;
+    var radius = Math.min(3*width/4, 3*height/4) / 2;
     var donutWidth = 75;
     var color = d3.scaleOrdinal()   // setting the color scale
         .range(["#5A39AC", "#DD98D6", "#E7C820", "#08B2B2"]);
@@ -1103,12 +1104,12 @@ function pie2() // function to draw the pie chart
         // setting the svg element
     var svg = d3.select('#donut')
         .append('svg')
-        .attr('class', 'pie')
+        .attr('class', 'pie_added')
         .attr('width', width)
         .attr('height', height)
         .append('g')
-        .attr('transform', 'translate(' + (width / 2) +
-            ',' + (height / 2) + ')');
+        .attr('transform', 'translate(' + (width / 2 -40) +
+            ',' + (height/2) + ')');
     
             // setting the arc and pie
     var arc = d3.arc()
@@ -1137,9 +1138,16 @@ function pie2() // function to draw the pie chart
 
         .style("position", "absolute");
 
+    // getting the grouped data
+    totals.sort(function (a, b) {
+        return b.value - a.value;
+    });
+    var group_data_length = 10;
+    var groupedData = totals.slice(group_data_length, totals.length);   
+
     // setting the path
     var path = svg.selectAll('path')
-    .data(pie(totals))
+    .data(pie(groupedData))
     .enter()
     .append('path')
     .attr('d', arc)
@@ -1182,73 +1190,178 @@ function pie2() // function to draw the pie chart
             donutTip
                 .style("opacity", 0);
         });
+
+}
+
+
+function pie2() // function to draw the pie chart
+{
+    // console.log(totals);
+    d3.select("#donut").selectAll("svg").remove(); // remove the existing svg element
     
+    // Setting the dimensions of the pie chart
+    var width = 360;
+    var height = 360;
+    var radius = Math.min(3*width/4, 3*height/4) / 2;
+    var donutWidth = 75;
+    var color = d3.scaleOrdinal()   // setting the color scale
+        .range(["#5A39AC", "#DD98D6", "#E7C820", "#08B2B2"]);
     
-    // var legend = svg.selectAll('.legend')
-    //     .data(color.domain())
-    //     .enter()
-    //     .append('g')
-    //     .attr('class', 'circle-legend')
-    //     .attr('transform', function (d, i) {
-    //         var height = legendRectSize + legendSpacing;
-    //         var offset = height * color.domain().length / 2;
-    //         var horz = -2 * legendRectSize - 13;
-    //         var vert = i * height - offset;
-    //         return 'translate(' + horz + ',' + vert + ')';
-    //     });
+        // setting the svg element
+    var svg = d3.select('#donut')
+        .append('svg')
+        .attr('class', 'pie')
+        .attr('width', width)
+        .attr('height', height)
+        .append('g')
+        .attr('transform', 'translate(' + (width / 2-20) +
+            ',' + (height / 2) + ')');
     
-    // legend.append('circle')
-    //     .style('fill', color)
-    //     .style('stroke', color)
-    //     .attr('cx', 0)
-    //     .attr('cy', 0)
-    //     .attr('r', '.5rem');
+            // setting the arc and pie
+    var arc = d3.arc()
+        .innerRadius(radius - donutWidth)
+        .outerRadius(radius);
     
-    // legend.append('text')
-    //     .attr('x', legendRectSize + legendSpacing)
-    //     .attr('y', legendRectSize - legendSpacing)
-    //     .text(function (d) {
-    //         return d;
-    //     });
+        // setting the pie
+    var pie = d3.pie()
+        .value(function (d) {
+            return d.value;
+        })
+        .sort(null);
     
-    // function change(data) {
-    //     var pie = d3.pie()
-    //         .value(function (d) {
-    //             return d.value;
-    //         }).sort(null)(data);
+        // setting the legend
+    var legendRectSize = 13;
+    var legendSpacing = 7;
     
-    //     var width = 360;
-    //     var height = 360;
-    //     var radius = Math.min(width, height) / 2;
-    //     var donutWidth = 75;
+    // setting the tooltip
+    var donutTip = d3.select("#donuttipDIV").append("div")
+        .attr("class", "donut-tip")
+        .style("opacity", 0)
+        // add styling to add border and also text colour 
+        .style("background-color", "white")
+        .style("border", "1px solid black")
+        .style("padding", "5px")
+
+        .style("position", "absolute");
     
-    //     path = d3.select("#donut")
-    //         .selectAll("path")
-    //         .data(pie); // Compute the new angles
-    //     var arc = d3.arc()
-    //         .innerRadius(radius - donutWidth)
-    //         .outerRadius(radius);
-    //     path.transition().duration(500).attr("d", arc); // redrawing the path with a smooth transition
-    // }
+    // if length of totals is greater than 10 then grouped rest data into grouped data
+    var group_data_length = 10;
+    var groupedData=false;
+    var total_new = totals;
+    if (totals.length > group_data_length) {
+        totals.sort(function (a, b) {
+            return b.value - a.value;
+        });
+        groupedData = true;
+        var groupedData = totals.slice(group_data_length, totals.length);
+        total_new = totals.slice(0, group_data_length);
+        var groupedTotal = 0;
+        for (var i = 0; i < groupedData.length; i++) {
+            groupedTotal += groupedData[i].value;
+        }
+        total_new.push({
+            title: "Others",
+            value: groupedTotal
+        });
+    }
+  
+    // setting the path
+    var path = svg.selectAll('path')
+    .data(pie(total_new))
+    .enter()
+    .append('path')
+    .attr('d', arc)
+    .attr('fill', '#5A39AC') // constant color
+    .attr('stroke', '#fff') // border color
+    .attr('stroke-width', 0.5) // border width
+        .attr('transform', 'translate(0, 0)')
+        .on('mouseover', function (event,d, i) {
+            // Setting the opacity of the path and transition
+            d3.select(this)
+                .attr('opacity', '.85');
+            donutTip
+                .style("opacity", 1);
+                let tagname= d.data.title;
+                let num = ((d.value / d.data.all) * 100).toFixed(2) + '%';
+                donutTip.html(tagname+"-"+d.value)
+                .style("left", parseInt(event.pageX + 10) + "px")
+                .style("top", parseInt(event.pageY - 15) + "px");
+    
+        })
+        .on('mousemove', function (event,d, i) {
+            // Setting the opacity of the path and transition
+            d3.select(this)
+                .attr('opacity', '.85');
+            donutTip
+                .style("opacity", 1);
+                let tagname= d.data.title;
+                let num = ((d.value / d.data.all) * 100).toFixed(2) + '%';
+                donutTip.html(tagname+"-"+d.value)
+                .style("left", parseInt(event.pageX + 10) + "px")
+                .style("top", parseInt(event.pageY - 15) + "px");
+    
+        })
+        .on('mouseout', function (d, i) {
+            // Setting the opacity of the path and transition
+            d3.select(this)
+                .attr('opacity', '1');
+
+            donutTip
+                .style("opacity", 0);
+        });
+
+    // if grouped data is seleceted by user then plot another pie chart to right of the first pie chart with the grouped data 
+    var othersPath = svg.selectAll('path')
+    .filter(function(d) {
+        return d.data.title === "Others";
+    });
+    
+    if (groupedData) {
+othersPath.on('click', function() {
+    // add style property to div with id donut
+    var donutDiv = d3.select('#donut');
+    donutDiv.style('display', 'flex')
+        .style('justify-content', 'space-between');
+    add_pie();
+});
+        
+
+        
+      
+    }
+    
     
 };
+
+function change_donut_property(){
+    if (d3.select('.pie_added')) {
+        d3.select('.pie_added').remove();
+    }
+    var donutDiv = d3.select('#donut');
+donutDiv.style('display', null)
+    .style('justify-content', null);
+}
+
 d3.select("button#everyone")
     .on("click", function () {
         console.log("hello");
-
         totals=totals_save;
+        change_donut_property();
         pie2();
     })
     d3.select("button#women")
     .on("click", function () {
         console.log("hello2 ");
-
+        change_donut_property();
         totals=totals_small;
+        // if donut has added properties then remove them
+       
         pie2();
     })
     d3.select("button#div1")
     .on("click", function () {
         console.log("Div1 ");
+        change_donut_property();
         totals=div1;
         pie2();
     })
@@ -1256,18 +1369,21 @@ d3.select("button#everyone")
     .on("click", function () {
         console.log("Div2 ");
         totals=div2;
+        change_donut_property();
         pie2();
     })
     d3.select("button#div3")
     .on("click", function () {
         console.log("Div3 ");
         totals=div3;
+        change_donut_property();
         pie2();
     })
     d3.select("button#div4")
     .on("click", function () {
         console.log("Div4 ");
         totals=div4;
+        change_donut_property();
         pie2();
     })
     
@@ -1715,16 +1831,16 @@ function removePopup() {
 make_graph(selectedValue, null);
 
 function make_legend(type){
-    d3.select(".legend").selectAll("*").remove();
+    d3.select(".legendMap").selectAll("*").remove();
   
     var legendWidth = 400;
   var legendHeight = 20;
   var legendMargin = { top: 10, right: 20, bottom: 10, left: 20 };
   
   // Append legend SVG to the container
-  var legendSvg = d3.select(".legend")
+  var legendSvg = d3.select(".legendMap")
     .append("svg")
-    .attr("class", "legend")
+    .attr("class", "legendMap")
     .attr("width", legendWidth + legendMargin.left + legendMargin.right)
     .attr("height", legendHeight + legendMargin.top + legendMargin.bottom+30)
     .append("g")
