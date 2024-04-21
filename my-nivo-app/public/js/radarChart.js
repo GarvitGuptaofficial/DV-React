@@ -305,19 +305,36 @@ var radarChartOptions = {
     color:  d3.scaleOrdinal().range(["#EDC951", "#CC333F", "#00A0B0", "#00DC00","#9370DB"]),
 };
 
+var [data,totalDurationSeconds] = [[[{"axis":"A","value":0.024555555555555556},{"axis":"B","value":0.04111111111111111},{"axis":"C","value":0.07022222222222223},{"axis":"D","value":0.0908888888888889},{"axis":"E","value":0.11766666666666667},{"axis":"F","value":0.1952222222222222},{"axis":"G","value":0.305},{"axis":"H","value":0.4191111111111111}],[{"axis":"A","value":0.09833333333333333},{"axis":"B","value":0.10844444444444444},{"axis":"C","value":0.1302222222222222},{"axis":"D","value":0.15866666666666668},{"axis":"E","value":0.4127777777777778},{"axis":"F","value":0.6351111111111111},{"axis":"G","value":0},{"axis":"H","value":0}],[{"axis":"A","value":0.050666666666666665},{"axis":"B","value":0.12022222222222222},{"axis":"C","value":0.19377777777777777},{"axis":"D","value":0.249},{"axis":"E","value":0},{"axis":"F","value":0},{"axis":"G","value":0},{"axis":"H","value":0}],[{"axis":"A","value":0.011},{"axis":"B","value":0.03077777777777778},{"axis":"C","value":0.06055555555555556},{"axis":"D","value":0.082},{"axis":"E","value":0.3638888888888889},{"axis":"F","value":0.6713333333333333},{"axis":"G","value":0},{"axis":"H","value":0}]],9000]
 async function Plot() {
     var usernames = document.getElementById("usernames").value;
     var contestId = document.getElementById("contestId").value;
-    if (usernames == "")
-        usernames = "Alexzzz,prietukani,Tejas_001,3867518";
-    if (contestId == "")
-        contestId = 1873;
+    if (usernames == "" && contestId == "")
+    {
+        usernames = "Alexzzz,prietukani,Tejas_001,3867518";  
+        contestId = 1873; 
+    }
+    else if (usernames == "" && contestId != "")
+    {
+        alert("Please Enter Handles");
+        return null;
+    }
+    else if (contestId == "" && usernames != "")
+    {
+        alert("Please Enter Contest ID");
+        return null;
+    }       
+    else
+    {
+        [data,totalDurationSeconds] = await fetchData(usernames, contestId);
+        console.log(JSON.stringify(data));
+        console.log(totalDurationSeconds);
+    } 
 
     function drawRadarChart(data, usernames,totalDurationSeconds) {
         RadarChart(".radarChart", data, radarChartOptions, usernames,totalDurationSeconds);
     }
 
-    var [data,totalDurationSeconds] = await fetchData(usernames, contestId);
 
     async function fetchData(handles, contest) {
         const handleList = handles.split(",").map((handle) => handle.trim());
