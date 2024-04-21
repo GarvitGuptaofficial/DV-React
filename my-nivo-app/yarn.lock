@@ -1645,6 +1645,18 @@
   dependencies:
     eslint-scope "5.1.1"
 
+"@nivo/annotations@0.85.1":
+  version "0.85.1"
+  resolved "https://registry.yarnpkg.com/@nivo/annotations/-/annotations-0.85.1.tgz#54ba37d07391f0bbe62b72414d7ba2042a2d627d"
+  integrity sha512-+YVFKMokf6MMXsztpEoOoFwG+XcEJV90xezuqJ8FmS0hgEzJ8xTeWNxPRWfrvxndMXNrau4QIRU5GrumBmiy4Q==
+  dependencies:
+    "@nivo/colors" "0.85.1"
+    "@nivo/core" "0.85.1"
+    "@react-spring/web" "9.4.5 || ^9.7.2"
+    "@types/prop-types" "^15.7.2"
+    lodash "^4.17.21"
+    prop-types "^15.7.2"
+
 "@nivo/axes@0.85.1":
   version "0.85.1"
   resolved "https://registry.yarnpkg.com/@nivo/axes/-/axes-0.85.1.tgz#ab9db080bcf193671b6de889eea3863e7d8cd250"
@@ -1727,6 +1739,21 @@
     d3-time-format "^3.0.0"
     lodash "^4.17.21"
     prop-types "^15.7.2"
+
+"@nivo/funnel@^0.85.1":
+  version "0.85.1"
+  resolved "https://registry.yarnpkg.com/@nivo/funnel/-/funnel-0.85.1.tgz#c5e255b74b4a5a3030b3f93d198781a993fa550b"
+  integrity sha512-UOyB7T478OzHt9kBkAf2of1aXdM7vBA6KdT2ld8/k0wXxuwTkBmAGzfzanXaAnDQoGd0mtrFPWr4FW/v8ZWwbQ==
+  dependencies:
+    "@nivo/annotations" "0.85.1"
+    "@nivo/colors" "0.85.1"
+    "@nivo/core" "0.85.1"
+    "@nivo/tooltip" "0.85.1"
+    "@react-spring/web" "9.4.5 || ^9.7.2"
+    "@types/d3-scale" "^4.0.8"
+    "@types/d3-shape" "^2.0.0"
+    d3-scale "^4.0.2"
+    d3-shape "^1.3.5"
 
 "@nivo/legends@0.85.1":
   version "0.85.1"

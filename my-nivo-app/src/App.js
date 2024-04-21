@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import BumpChart from './components/bumpchart'; // Importing the BumpChart component
 import TimeRangeChart from './components/TimeRangeChart'; 
-import { TimeRange } from '@nivo/calendar';
+import Funnel from './components/Funnel'; 
 
 function App() {
   return (
@@ -30,6 +30,17 @@ function App() {
         </p>
         <div className="chart-container">
             <TimeRangeChart /> 
+        </div>
+      </div>      
+      <br /><br />
+      <div className="row1">
+            <br />
+        <h1>Contest Submission Analysis</h1>
+        <p>
+            This chart shows the relative difficulty of different problems in a contest progressively. Number of Participants to number of people who submitted the solution for each problem is shown in the chart.
+        </p>
+        <div className="chart-container">
+            <Funnel /> 
         </div>
       </div>
      
