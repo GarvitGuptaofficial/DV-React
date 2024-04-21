@@ -1,5 +1,3 @@
-function TimeRadarChart(){
-
 function RadarChart(id, data, options, names,contestDuration) {
     var cfg = {
         w: 600,                                // Width of the circle
@@ -291,20 +289,20 @@ function RadarChart(id, data, options, names,contestDuration) {
 
 }//RadarChart
 
-var margin = { top: 100, right: 100, bottom: 100, left: 100 },
-    width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
-    height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
+// var margin = { top: 100, right: 100, bottom: 100, left: 100 },
+//     width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
+//     height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
 
-var color = d3.scaleOrdinal().range(["#EDC951", "#CC333F", "#00A0B0", "#00DC00","#9370DB"]);
+// var color = d3.scaleOrdinal().range(["#EDC951", "#CC333F", "#00A0B0", "#00DC00","#9370DB"]);
 
 var radarChartOptions = {
-    w: width,
-    h: height,
-    margin: margin,
+    w: Math.min(700, window.innerWidth - 10) - 100 - 100,
+    h: height = Math.min(Math.min(700, window.innerWidth - 10) - 100 - 100, window.innerHeight - 100 - 100 - 20),
+    margin: { top: 100, right: 100, bottom: 100, left: 100 },
     maxValue: 0.5,
     levels: 5,
     roundStrokes: true,
-    color: color,
+    color:  d3.scaleOrdinal().range(["#EDC951", "#CC333F", "#00A0B0", "#00DC00","#9370DB"]),
 };
 
 async function Plot() {
@@ -414,10 +412,7 @@ async function Plot() {
 
     drawRadarChart(data, usernames,totalDurationSeconds);
 }
-
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function() {
+    // This code will run when the DOM content is fully loaded
     Plot();
 });
-
-}
-TimeRadarChart();

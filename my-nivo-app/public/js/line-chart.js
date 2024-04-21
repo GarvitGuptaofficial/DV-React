@@ -1,4 +1,7 @@
-getData();  
+document.addEventListener('DOMContentLoaded', function() {
+    // This code will run when the DOM content is fully loaded
+    getData();  
+});
 function getData() {
     var handle1 = document.getElementById('userId1').value.trim();
     var handle2 = document.getElementById('userId2').value.trim();
@@ -28,23 +31,43 @@ function getData() {
         });
 }
 
-function fetchUserData(handle) {
-    var apiUrl = 'https://codeforces.com/api/user.rating?handle=' + handle;
-    return fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'OK') {
-                return { handle: handle, data: data.result };
-            } else {
-                alert('User "' + handle + '" not found or error in fetching data.');
-                return null;
+async function fetchUserData(handle) {
+    const apiUrl = 'https://codeforces.com/api/user.rating?handle=' + handle;
+    let retryCount = 0;
+    let responseData;
+
+    while (retryCount < 3) { // Retry up to 3 times
+        try {
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch data for ${handle}. Status code: ${response.status}`);
             }
-        })
-        .catch(error => {
-            console.error('Error fetching data for ' + handle + ':', error);
-            return null;
-        });
+            responseData = await response.json();
+            break; // Break the retry loop if request is successful
+        } catch (error) {
+            if (error instanceof Error && error.message.includes("429")) {
+                // If 429 error (Too Many Requests), wait for 30 seconds before retrying
+                await new Promise(resolve => setTimeout(resolve, 30000));
+                retryCount++;
+            } else {
+                throw error; // Rethrow other errors
+            }
+        }
+    }
+
+    if (retryCount === 3) {
+        console.error(`Failed to fetch data for ${handle} after ${retryCount} retries.`);
+        return null;
+    }
+
+    if (responseData.status === 'OK') {
+        return { handle: handle, data: responseData.result };
+    } else {
+        alert(`User "${handle}" not found or error in fetching data.`);
+        return null;
+    }
 }
+
 
 function createChart(userData) {
 var parseTime = d3.timeParse('%s');
