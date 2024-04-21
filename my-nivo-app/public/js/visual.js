@@ -15,8 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
 The code follows a common pattern for creating D3.js visualizations. It sets up the necessary scales, axes, and SVG elements, and then uses D3's data binding and transitions to create and update the bar elements based on the provided data. The configuration options allow for customizing various aspects of the visualization, such as colors, labels, animation, and data sorting.
 
 */
-
+  var global_flag=0;
   var state = "play";
+  var selecetedDate="2016/05/07";
   // OPTION to keep a button to make the graph black and white
   // var colourBlind= 'colorBlind';
   // Get the checkbox element
@@ -31,6 +32,34 @@ The code follows a common pattern for creating D3.js visualizations. It sets up 
       state = "play";
       console.log(state);
       playFunction();
+      if (global_flag==1)
+      {
+        var svg = d3.select(".RaceChart");
+        svg.html("");
+        d3.csv("Data/TopCoder.csv")
+        .then(function (data) {
+          global_store_data = [];
+          var new_data=[];
+          var temp_flag=0
+          // currentdate="2016/05/07";
+          data.forEach((element) => {
+            if (element["date"] === selecetedDate || temp_flag==1) {
+              // console.log("HI");
+              temp_flag=1
+              new_data.push(element);
+            }
+          });
+          // Call the draw function with the loaded data
+          global_store_data = new_data;
+          console.log(global_store_data);
+          draw(global_store_data);
+          global_flag=0;
+        })
+        .catch(function (error) {
+          // Handle error if data loading fails
+          console.error("Error loading the data:", error);
+        });
+      }
     } else {
       // Perform the pause function
       state = "pause";
@@ -1183,18 +1212,44 @@ The code follows a common pattern for creating D3.js visualizations. It sets up 
 
   // Add an event listener to the slider input
   sliderInput.addEventListener("input", function () {
-    const sliderValue = this.value;
-    console.log(sliderValue);
-    // Calculate the target index based on the slider value
+    state="pause"
+    var svg = d3.select(".RaceChart");
+    svg.html("");
+    state="play"
+    d3.csv("Data/TopCoder.csv")
+    .then(function (data) {
+      global_store_data = [];
+      var new_data=[];
+      // currentdate="2016/05/07";
+      data.forEach((element) => {
+        if (element["date"] === selecetedDate) {
+          console.log("HI");
+          new_data.push(element);
+        }
+      });
+      // Call the draw function with the loaded data
+      global_store_data = new_data;
+      console.log(global_store_data);
+      draw(global_store_data);
+      global_flag=1;
+    })
+    .catch(function (error) {
+      // Handle error if data loading fails
+      console.error("Error loading the data:", error);
+    });
+    // draw(data);
+    // const sliderValue = this.value;
+    // console.log(sliderValue);
+    // // Calculate the target index based on the slider value
 
-    const targetIndex = Math.floor((-1 * sliderValue) / 100);
+    // const targetIndex = Math.floor((-1 * sliderValue) / 100);
 
-    // Update the currentdate and call getCurrentData with the target index
-    currentdate = date[targetIndex];
-    getCurrentData(currentdate);
+    // // Update the currentdate and call getCurrentData with the target index
+    // currentdate = date[targetIndex];
+    // getCurrentData(currentdate);
 
-    // Call the redraw and change functions to update the visualization
-    redraw();
-    change();
+    // // Call the redraw and change functions to update the visualization
+    // redraw();
+    // change();
   });
 });
