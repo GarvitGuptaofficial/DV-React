@@ -3,7 +3,7 @@ import './App.css';
 import BumpChart from './components/bumpchart'; // Importing the BumpChart component
 import TimeRangeChart from './components/TimeRangeChart'; 
 import Funnel from './components/Funnel'; 
-
+import MyResponsiveRadialBar from './components/MyResponsiveRadialBar';
 function App() {
   return (
     <div>
@@ -41,6 +41,16 @@ function App() {
         </p>
         <div className="chart-container">
             <Funnel /> 
+        </div>
+      </div>
+           <div className="row1">
+            <br />
+        <h1>Submission Language Analysis</h1>
+        <p>
+            This chart shows the comparision of the most used 4 programming languages in the contests. Splitting of Submission based on verdict is also shown in the chart. 
+                    </p>
+        <div className="chart-container">
+            <MyResponsiveRadialBar /> 
         </div>
       </div>
      
