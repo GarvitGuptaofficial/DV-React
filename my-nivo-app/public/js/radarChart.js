@@ -147,7 +147,7 @@ function RadarChart(id, data, options, names, contestDuration) {
   // Append the labels at each axis
   axis
     .append("text")
-    .attr("class", "legend")
+    .attr("class", "legendRadar")
     .style("font-size", "11px")
     .attr("text-anchor", "middle")
     .attr("dy", "0.35em")

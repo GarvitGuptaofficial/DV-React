@@ -542,7 +542,7 @@ function createChart(userData) {
     // Add legend
     var legend = linechart_svg
       .append("g")
-      .attr("class", "legend")
+      .attr("class", "legendLine")
       .attr("transform", "translate(" + (width - 100) + "," + i * 20 + ")");
 
     legend
@@ -553,7 +553,7 @@ function createChart(userData) {
 
     legend
       .append("text")
-      .attr("class", "legend-text")
+      .attr("class", "legendLine-text")
       .attr("x", 24)
       .attr("y", 9)
       .attr("dy", ".35em")
