@@ -46,9 +46,14 @@ function App() {
            <div className="row1">
             <br />
         <h1>Submission Language Analysis</h1>
+        <br />
         <p>
             This chart shows the comparision of the most used 4 programming languages in the contests. Splitting of Submission based on verdict is also shown in the chart. 
                     </p>
+        <p>
+
+            This chart shows that most TLE's occur in Python language while C++ is the most used language in Competetive Programming. 
+        </p>
         <div className="chart-container">
             <MyResponsiveRadialBar /> 
         </div>
