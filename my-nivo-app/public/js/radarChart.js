@@ -1,3 +1,5 @@
+function TimeRadarChart(){
+
 function RadarChart(id, data, options, names,contestDuration) {
     var cfg = {
         w: 600,                                // Width of the circle
@@ -416,3 +418,6 @@ async function Plot() {
 document.addEventListener("DOMContentLoaded", function () {
     Plot();
 });
+
+}
+TimeRadarChart();

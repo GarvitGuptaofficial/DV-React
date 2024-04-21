@@ -1,4 +1,5 @@
-var state = "averageProblemsSolved";
+function avgBarChart(){
+  var state = "averageProblemsSolved";
 
 // Select the dropdown element
 const dropdown = document.getElementById("slider2");
@@ -316,3 +317,6 @@ function drawBarchart() {
 }
 
 drawBarchart();
+}
+
+avgBarChart();

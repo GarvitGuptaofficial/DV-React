@@ -1,4 +1,5 @@
-// totals_save has the data for all the tags
+function MapAndPie() {
+    // totals_save has the data for all the tags
 var totals_save = [
     {
         title: "math",
@@ -1775,4 +1776,5 @@ function make_legend(type){
     .attr("transform", "translate(0," + legendHeight + ")")
     .call(legendAxis);
   }
-  
+}
+MapAndPie();
