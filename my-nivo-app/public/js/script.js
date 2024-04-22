@@ -1094,8 +1094,8 @@ function add_pie() {
     if (d3.select('.pie_added')) {
         d3.select('.pie_added').remove();
     }
-    var width = 360;
-    var height = 360;
+    var width = 650;
+    var height = 400;
     var radius = Math.min(3*width/4, 3*height/4) / 2;
     var donutWidth = 75;
     var color = d3.scaleOrdinal()   // setting the color scale
@@ -1112,9 +1112,15 @@ function add_pie() {
             ',' + (height/2) + ')');
     
             // setting the arc and pie
+            function midAngle(d){
+                return d.startAngle + (d.endAngle - d.startAngle)/2;
+            }        
     var arc = d3.arc()
         .innerRadius(radius - donutWidth)
         .outerRadius(radius);
+        var outerArc = d3.arc()
+        .innerRadius((radius-donutWidth) * 1.2)
+        .outerRadius(radius * 1.2);
     
         // setting the pie
     var pie = d3.pie()
@@ -1190,6 +1196,43 @@ function add_pie() {
             donutTip
                 .style("opacity", 0);
         });
+        var labels = svg.selectAll("text")
+        .data(pie(groupedData))
+        .enter()
+        .append("text")
+        .attr("transform", function(d) {
+            var pos = outerArc.centroid(d);
+            pos[0] = radius * 0.95 * (midAngle(d) < Math.PI ? 1 : -1);
+            return "translate(" + pos + ")";
+        })
+        .attr("dy", ".35em")
+        .attr("text-anchor", function(d) {
+            return midAngle(d) < Math.PI ? "start" : "end";
+        })
+        .text(function(d) {
+            return d.data.title + "-" + d.value; // Adjust this based on your data structure
+        });
+        var lines = svg.selectAll("line")
+    .data(pie(groupedData))
+    .enter()
+    .append("line")
+    .attr("x1", function (d) {
+        return outerArc.centroid(d)[0];
+    })
+    .attr("y1", function (d) {
+        return outerArc.centroid(d)[1];
+    })
+    .attr("x2", function (d) {
+        var pos = outerArc.centroid(d);
+        pos[0] = radius * 0.95 * (midAngle(d) < Math.PI ? 1 : -1);
+        return pos[0];
+    })
+    .attr("y2", function (d) {
+        var pos = outerArc.centroid(d);
+        return pos[1];
+    })
+    .attr("stroke", "black")
+    .attr("stroke-width", 1);
 
 }
 
@@ -1200,8 +1243,8 @@ function pie2() // function to draw the pie chart
     d3.select("#donut").selectAll("svg").remove(); // remove the existing svg element
     
     // Setting the dimensions of the pie chart
-    var width = 360;
-    var height = 360;
+    var width = 650;
+    var height = 400;
     var radius = Math.min(3*width/4, 3*height/4) / 2;
     var donutWidth = 75;
     var color = d3.scaleOrdinal()   // setting the color scale
@@ -1217,11 +1260,16 @@ function pie2() // function to draw the pie chart
         .attr('transform', 'translate(' + (width / 2-20) +
             ',' + (height / 2) + ')');
     
-            // setting the arc and pie
+            // setting the arc and pie   
+            function midAngle(d){
+                return d.startAngle + (d.endAngle - d.startAngle)/2;
+            }        
     var arc = d3.arc()
         .innerRadius(radius - donutWidth)
         .outerRadius(radius);
-    
+        var outerArc = d3.arc()
+        .innerRadius((radius-donutWidth) * 1.2)
+        .outerRadius(radius * 1.2);
         // setting the pie
     var pie = d3.pie()
         .value(function (d) {
@@ -1315,7 +1363,43 @@ function pie2() // function to draw the pie chart
     .filter(function(d) {
         return d.data.title === "Others";
     });
-    
+    var labels = svg.selectAll("text")
+        .data(pie(total_new))
+        .enter()
+        .append("text")
+        .attr("transform", function(d) {
+            var pos = outerArc.centroid(d);
+            pos[0] = radius * 0.95 * (midAngle(d) < Math.PI ? 1 : -1);
+            return "translate(" + pos + ")";
+        })
+        .attr("dy", ".35em")
+        .attr("text-anchor", function(d) {
+            return midAngle(d) < Math.PI ? "start" : "end";
+        })
+        .text(function(d) {
+            return d.data.title + "-" + d.value; // Adjust this based on your data structure
+        });
+        var lines = svg.selectAll("line")
+    .data(pie(total_new))
+    .enter()
+    .append("line")
+    .attr("x1", function (d) {
+        return outerArc.centroid(d)[0];
+    })
+    .attr("y1", function (d) {
+        return outerArc.centroid(d)[1];
+    })
+    .attr("x2", function (d) {
+        var pos = outerArc.centroid(d);
+        pos[0] = radius * 0.95 * (midAngle(d) < Math.PI ? 1 : -1);
+        return pos[0];
+    })
+    .attr("y2", function (d) {
+        var pos = outerArc.centroid(d);
+        return pos[1];
+    })
+    .attr("stroke", "black")
+    .attr("stroke-width", 1);
     if (groupedData) {
 othersPath.on('click', function() {
     // add style property to div with id donut
