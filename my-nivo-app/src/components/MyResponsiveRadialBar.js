@@ -89,12 +89,21 @@ const data=[
       ]
     }
   ];
-const MyResponsiveRadialBar = () => (
+const MyResponsiveRadialBar = () => {
+  var width_per = window.innerWidth > 500 ? '50%' : '100%';
+  var temp_height = window.innerWidth > 500 ? '800px' : '300px';
+  if (window.innerWidth>500 && window.innerWidth < 840)
+  {
+    temp_height = '300px';
+    width_per='80%';
+  }
+  console.log("OOF",temp_height);
+  return (
     <div 
     style={{
-      width: "50%",
+      width: width_per,
       margin: "0 auto",
-      height: "800px",
+      height: temp_height,
       backgroundColor: "transparent",
     }}
     >
@@ -145,5 +154,5 @@ const MyResponsiveRadialBar = () => (
   />
     </div>
 );
-
+};
 export default MyResponsiveRadialBar;
