@@ -40,13 +40,19 @@ const data=[
   ]
   var screenWidth = window.screen.width;
   var screenHeight = window.screen.height;
+  var funnWidth=(screenWidth*90)/100;
+  var funnHeight=(screenHeight*35)/100;
+  if (screenWidth > 900) {
+    funnWidth=(screenWidth*50)/100;
+    funnHeight=(screenHeight*60)/100;
+  }
   
 const Funnel = () => (
   <div 
   style={{
-    width: (screenWidth*90)/100,
+    width: funnWidth,
     margin: "0 auto",
-    height: (screenHeight*35)/100,
+    height: funnHeight,
     backgroundColor: "transparent",
   }}
   >
