@@ -1123,7 +1123,7 @@ else if (screenWidth > 400 && screenWidth <= 600) {
     svgHeight = 500;
     scaleSize=70;
 } else {
-    svgWidth = 1000;
+    svgWidth = 900;
     svgHeight = 700;
     // console.log(screenWidth)
     console.log("SCREEN",screenWidth);
@@ -1262,7 +1262,8 @@ function generatePopupContent(countryName, dataType) {
     // Declaring y axis domain and range
     const y = d3
       .scaleLinear()
-      .domain([0, d3.max(topOrganizations, (d) => +d[dataType])])
+    //   .domain([0, d3.max(topOrganizations, (d) => +d[dataType])])
+    .domain([0,4000])
       .range([height, 0]);
 
     // Declaring the tooltip
@@ -1645,12 +1646,16 @@ function make_legend(type){
   if(type=="MaxRating"){
     range=[0,4000]
   }else{
-    range=[0,2600]
+    range=[0,2500]
   }
-  
-  var legendScale = d3.scaleLinear()
-    .domain(range) // Adjust domain based on your color scale range
-    .range([0, legendWidth]);
+
+    var domainMax = type === "MaxRating" ? 4000 : 4000;
+    var domainStep = domainMax / 4;
+    var domainValues = [0, domainStep, domainStep * 2, domainStep * 3, domainStep * 4];
+
+    var legendScale = d3.scaleLinear()
+        .domain(domainValues)
+        .range([0, legendWidth/4]);
   
   var legendAxis = d3.axisBottom(legendScale)
     .tickSize(5)
