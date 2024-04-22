@@ -2516,8 +2516,22 @@ const data=[
     }
 ]
 
-const TimeRangeChart = () => (
-    <div style={{ width: '95%', height: '500px', backgroundColor: 'transparent' }}>
+const TimeRangeChart = () => {
+    var itemHeight = window.innerWidth > 500 ? 160 : 50;
+    var temp_height = window.innerWidth > 500 ? '500px' : '180px';
+    var width_per = window.innerWidth > 500 ? '95%' : '108%';
+    var margin_lef= window.innerWidth > 500 ? 40 : 10;
+    var temp_bottom = window.innerWidth > 768 ? 20 : 100;
+    console.log("INNER",window.innerWidth);
+    if (window.innerWidth < 820 && window.innerWidth > 500)
+    {
+        console.log("OK");
+        temp_height = '300px';
+    }
+    // if (window.innerWidth > 600)
+    //  temp_bottom= 1000 
+    return (
+    <div style={{ width: width_per, height: temp_height, backgroundColor: 'transparent' }}>
       <ResponsiveTimeRange
        data={data}
        from="2023-01-01"
@@ -2526,7 +2540,7 @@ const TimeRangeChart = () => (
        colors={['#fbd1ca', '#f8a89b', '#f57d69', '#f26149', '#f03e21']}
        minValue={0}
        maxValue={20}
-       margin={{ top: 40, right: 40, bottom: 100, left: 40 }}
+       margin={{ top: 40, right: 40, bottom: temp_bottom, left: margin_lef }}
        monthLegendOffset={14}
        weekdayLegendOffset={77}
        dayRadius={8}
@@ -2583,7 +2597,7 @@ const TimeRangeChart = () => (
             justify: false,
             itemCount: 4,
             itemWidth: 42,
-            itemHeight: 160,
+            itemHeight: itemHeight,
             itemsSpacing: 14,
             itemDirection: 'left-to-right',
             translateX: 0,
@@ -2597,5 +2611,6 @@ const TimeRangeChart = () => (
       />
     </div>
   );
+};
   
 export default TimeRangeChart;

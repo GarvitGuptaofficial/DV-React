@@ -120,12 +120,19 @@ const data = [
     ],
   },
 ];
-const BumpChart = () => (
+const BumpChart = () => {
+  console.log("INNER",window.innerWidth);
+  var itemHeight = window.innerWidth > 500 ? 160 : 50;
+  var temp_height = window.innerWidth > 820 ? '800px' : '500px';
+  var width_per = window.innerWidth > 820 ? '50%' : '80%';
+  var margin_lef= window.innerWidth > 500 ? 40 : 10;
+  // var temp_right = window.innerWidth > 768 ? 100 : 20;
+  return (
   <div
     style={{
-      width: "50%",
+      width: width_per,
       margin: "0 auto",
-      height: "800px",
+      height: temp_height,
       backgroundColor: "transparent",
     }}
   >
@@ -172,10 +179,10 @@ const BumpChart = () => (
         legendOffset: -40,
         truncateTickAt: 0
     }}
-      margin={{ top: 40, right: 100, bottom: 40, left: 60 }}
+      margin={{ top: 40, right: 100, bottom: 40, left: 0 }}
       axisRight={null}
     />
   </div>
 );
-
+};
 export default BumpChart;

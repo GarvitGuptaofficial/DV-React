@@ -39,12 +39,15 @@ const data=[
     }
   ]
 
-const Funnel = () => (
+const Funnel = () => {
+  var height_temp = window.innerWidth > 768 ? '800px' : '600px';
+
+  return (
   <div 
   style={{
     width: "50%",
     margin: "0 auto",
-    height: "800px",
+    height: height_temp,
     backgroundColor: "transparent",
   }}
   >
@@ -75,5 +78,5 @@ const Funnel = () => (
     />
   </div>
 );
-
+};
 export default Funnel;

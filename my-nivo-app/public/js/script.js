@@ -1209,9 +1209,51 @@ pie2();
 
 
 // Getting the svg element and setting the width and height
-const svg = d3.select("#my_dataviz"),
-  width = +svg.attr("width"),
-  height = +svg.attr("height");
+// var screenWidth = window.innerWidth;
+    // var svg = document.getElementById('my_dataviz');
+    var svgWidth, svgHeight;
+// if (screenWidth <= 600) {
+//     svgWidth = 500;
+//     svgHeight = 300;
+// } else if (screenWidth > 600 && screenWidth <= 900) {
+//     svgWidth = 700;
+//     svgHeight = 500;
+// } else {
+//     svgWidth = 1000;
+//     svgHeight = 700;
+// }
+
+const svg = d3.select("#my_dataviz");
+var screenWidth = window.innerWidth;
+console.log("SCREEN",screenWidth);
+    // var svg = document.getElementById('my_dataviz');
+    var svgWidth, svgHeight;
+    var scaleSize=100;
+if (screenWidth <= 400) {
+    svgWidth = 250;
+    svgHeight = 300;
+    scaleSize=35;
+}
+else if (screenWidth > 400 && screenWidth <= 600) {
+    svgWidth = 400;
+    svgHeight = 300;
+    scaleSize=50
+} else if (screenWidth > 600 && screenWidth <= 900) {
+    svgWidth = 600;
+    svgHeight = 500;
+    scaleSize=70;
+} else {
+    svgWidth = 1000;
+    svgHeight = 700;
+    // console.log(screenWidth)
+    console.log("SCREEN",screenWidth);
+}
+svg.attr('width', svgWidth);
+    svg.attr('height', svgHeight);
+const 
+  width = svgWidth,
+  height = svgHeight;
+// console.log("WIDTH",svg.attr("width"));    
 
 // Initializing Variables
 document.getElementById("slider").value = "MaxRating";
@@ -1221,7 +1263,8 @@ var selectedValue = "MaxRating"; // Variable to store the selected value from th
 // declaring the projection
 const path = d3.geoPath(); // Path generator
 const projection = d3
-  .geoMercator() // Mercator projection
+  .geoMercator() 
+  .scale(scaleSize) // Mercator projection
   .translate([width / 2, height / 2]); // Center the map in the middle of the SVG element
 
 const data = new Map(); // Map to store the data
@@ -1289,24 +1332,51 @@ function generatePopupContent(countryName, dataType) {
     }
     // Plot bar chart based on the selected data type
     const margin = { top: 20, right: 20, bottom: 30, left: 40 }; // Margin for the bar chart
-    const width = 400 - margin.left - margin.right; // Width of the bar chart
-    const height = 300 - margin.top - margin.bottom; // Height of the bar chart
+    var width = 400 - margin.left - margin.right; // Width of the bar chart
+    var temp_width=500;
+    var height = 300 - margin.top - margin.bottom; // Height of the bar chart
+    var translate_width=180;
+    var temp_height=500;
+    var translate_top=100;
+    var font_size="18px";
+    var x_range=200;
+    // var bar_height=
+    if (screenWidth < 900)
+    {
+        width = 200 - margin.left - margin.right;
+        temp_width=300;
+        translate_width=50;
+        translate_top=10;
+        temp_height=300;
+        font_size="12px"
+    }
+    if (screenWidth < 500)
+    {
+        width = 150 - margin.left - margin.right;
+        height = 150 - margin.left - margin.right;
+        temp_width=200;
+        translate_width=20;
+        translate_top=10;
+        temp_height=200;
+        font_size="8px"
+        x_range=50;
+    }
     const svg = d3
       .select("#barChart") // Select the bar chart div
       .append("svg") // Append an SVG element
-      .attr("width", width + margin.left + margin.right + 500) // Set the width
-      .attr("height", height + margin.top + margin.bottom + 500) // Set the height and append a group element to the SVG
+      .attr("width", width + margin.left + margin.right + temp_width) // Set the width
+      .attr("height", height + margin.top + margin.bottom + temp_height) // Set the height and append a group element to the SVG
       .append("g")
       .attr(
         "transform",
-        "translate(" + (margin.left + 180) + "," + (margin.top + 100) + ")"
+        "translate(" + (margin.left + translate_width) + "," + (margin.top + translate_top) + ")"
       ); // Translate the group element
 
     // Declaring x axis domain and range
     const x = d3
       .scaleBand()
       .domain(topOrganizations.map((d) => d.Organisation))
-      .range([0, width + 200])
+      .range([0, width + x_range])
       .padding(0.1);
 
     // Declaring y axis domain and range
@@ -1393,14 +1463,14 @@ function generatePopupContent(countryName, dataType) {
       .attr("y", 0)
       .attr("dy", ".35em")
       .style("text-anchor", "end")
-      .style("font-size", "18px");
+      .style("font-size", font_size);
     //   .style("font-wight", "bold")
 
     // Append y axis to the svg element
     svg
       .append("g")
       .call(d3.axisLeft(y))
-      .style("font-size", "18px")
+      .style("font-size", font_size)
       .style("font-wight", "bold");
     //   .style("font-wight", "bold")
   });
@@ -1598,6 +1668,7 @@ document.getElementById("slider").addEventListener("change", function () {
   .range(["#e5f5e0", "#006d2c"]);
   // Remove the existing popup if it exists
   removePopup();
+//   d3.select(".legendMap").selectAll("*").remove();
   // Redraw the map and bar chart with the updated data based on the selected value
   make_graph(selectedValue, currentCountryName);
   make_legend(selectedValue);
@@ -1646,8 +1717,12 @@ make_graph(selectedValue, null);
 
 function make_legend(type){
     d3.select(".legendMap").selectAll("*").remove();
-  
+    // var screenWidth = window.innerWidth;
     var legendWidth = 400;
+    if (screenWidth<500)
+    {
+        legendWidth=200;
+    }
   var legendHeight = 20;
   var legendMargin = { top: 10, right: 20, bottom: 10, left: 20 };
   
@@ -1707,4 +1782,5 @@ function make_legend(type){
     .call(legendAxis);
   }
 }
+window.addEventListener('resize', MapAndPie);
 MapAndPie();
