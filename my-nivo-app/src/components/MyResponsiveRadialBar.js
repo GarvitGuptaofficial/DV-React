@@ -5,84 +5,87 @@ const data=[
       "id": "C#",
       "data": [
         {
-          "x": "Accepted",
-          "y": 2123
-        },
+            "x": "TLE",
+            "y": 223
+          },
+        
+          {
+            "x": "Compilation Error",
+            "y": 1123
+          },
         {
-          "x": "Wrong Answer",
-          "y": 2789
-        },
-        {
-          "x": "TLE",
-          "y": 223
-        },
-        {
-          "x": "Compilation Error",
-          "y": 1123
-        }
+            "x": "Accepted",
+            "y": 2123
+          },
+          {
+            "x": "Wrong Answer",
+            "y": 2789
+          }
+        
       ]
     },
     {
       "id": "Java",
       "data": [
-        {
-          "x": "Accepted",
-          "y": 4271
-        },
-        {
-          "x": "Wrong Answer",
-          "y": 5582
-        },
-        {
-          "x": "TLE",
-          "y": 345
-        },
-        {
-          "x": "Compilation Error",
-          "y": 975
-        }
+          {
+            "x": "TLE",
+            "y": 765
+          },
+          {
+              "x": "Compilation Error",
+              "y": 975
+          },
+          {
+              "x": "Accepted",
+              "y": 4271
+            },
+            {
+                "x": "Wrong Answer",
+                "y": 5582
+              }
       ]
     },
     {
       "id": "Python",
       "data": [
-        {
-          "x": "Accepted",
-          "y": 6012
-        },
-        {
-          "x": "Wrong Answer",
-          "y": 7483
-        },
-        {
-          "x": "TLE",
-          "y": 3945
-        },
-        {
-          "x": "Compilation Error",
-          "y": 1022
-        }
+          {
+              "x": "TLE",
+              "y": 3945
+            },
+            {
+                "x": "Compilation Error",
+                "y": 1022
+            },
+            {
+                "x": "Accepted",
+                "y": 6012
+            },
+            {
+                "x": "Wrong Answer",
+                "y": 7483
+              }
       ]
     },
         {
       "id": "C++",
       "data": [
-        {
-          "x": "Accepted",
-          "y": 12353
-        },
-        {
-          "x": "Wrong Answer",
-          "y": 7684
-        },
-        {
-          "x": "TLE",
-          "y": 567
-        },
-        {
-          "x": "Compilation Error",
-          "y": 1222
-        }
+          
+          {
+              "x": "TLE",
+              "y": 567
+            },
+            {
+                "x": "Compilation Error",
+                "y": 1222
+            },
+            {
+              "x": "Accepted",
+              "y": 12353
+            },
+            {
+            "x": "Wrong Answer",
+            "y": 7684
+          }
       ]
     }
   ];
@@ -99,7 +102,7 @@ const MyResponsiveRadialBar = () => (
     data={data}
     valueFormat=">-.2f"
     padding={0.35}
-    margin={{ top: 40, right: 120, bottom: 40, left: 40 }}
+    margin={{ top: 40, right: 240, bottom: 40, left: 40 }}
     colors={{ scheme: 'category10' }}
     borderWidth={2}
     borderColor={{ theme: 'background' }}
@@ -120,7 +123,7 @@ const MyResponsiveRadialBar = () => (
         anchor: 'right',
         direction: 'column',
         justify: false,
-        translateX: +40,
+        translateX: +200,
         translateY: 0,
         itemsSpacing: 6,
         itemDirection: 'left-to-right',
