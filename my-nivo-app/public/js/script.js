@@ -1115,6 +1115,9 @@ function pie2() // function to draw the pie chart
     .attr("stroke-width", 1);
     if (groupedData) {
 othersPath.on('click', function() {
+    if (d3.select('.blockHead')) {
+        d3.select('.blockHead').remove();
+    }
     // add style property to div with id donut
     var donutDiv = d3.select('#donut');
     donutDiv.style('display', 'flex')

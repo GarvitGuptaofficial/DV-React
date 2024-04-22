@@ -400,11 +400,19 @@ async function fetchUserData(handle) {
   }
 }
 
+
+var screenWidth = window.screen.width;
+var screenHeight = window.screen.height;
+
 function createChart(userData) {
+var input1 = d3.select("#userId1");
+var input2 = d3.select("#userId2");
+input1.style('width', '30%');
+input2.style('width', '30%');
   var parseTime = d3.timeParse("%s");
   var margin = { top: 20, right: 30, bottom: 30, left: 50 },
-    width = 800 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    width = 0.6*screenWidth - margin.left - margin.right,
+    height = 0.6*screenHeight - margin.top - margin.bottom;
 
   // Remove existing chart
   d3.select("#svg-chart").remove();
