@@ -649,7 +649,7 @@ var pie_chart_height;
 if (window.screen.width < 600) // if the screen width is less than 900 then set the width and height of the svg element
 {
     pie_chart_height=250;
-    pie_chart_width=450;
+    pie_chart_width=400;
 }
 else
 {
@@ -862,7 +862,7 @@ function pie2() // function to draw the pie chart
         svg.attr('transform', 'translate(' + (width / 2 -40) +
             ',' + (height/2 + 20) + ')')
     }
-    else
+    else if (window.screen.width >= 900)
     {
         svg
         .attr('transform', 'translate(' + (width / 2-20) +
