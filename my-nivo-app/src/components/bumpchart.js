@@ -120,22 +120,21 @@ const data = [
     ],
   },
 ];
-const BumpChart = () => {
-  console.log("INNER",window.innerWidth);
-  var itemHeight = window.innerWidth > 500 ? 160 : 50;
-  var temp_height = window.innerWidth > 820 ? '800px' : '500px';
-  var width_per = window.innerWidth > 820 ? '50%' : '80%';
-  var margin_lef= window.innerWidth > 500 ? 40 : 10;
-  // var temp_right = window.innerWidth > 768 ? 100 : 20;
-  return (
+var screenWidth = window.screen.width;
+var screenHeight = window.screen.height;
+
+const BumpChart = () => (
+  
   <div
     style={{
-      width: width_per,
+      width: (screenWidth*90)/100,
       margin: "0 auto",
-      height: temp_height,
+      height: (screenHeight*35)/100,
       backgroundColor: "transparent",
     }}
   >
+
+
     <ResponsiveBump
     data={data}
     colors={{ scheme: 'category10' }}
@@ -179,10 +178,10 @@ const BumpChart = () => {
         legendOffset: -40,
         truncateTickAt: 0
     }}
-      margin={{ top: 40, right: 100, bottom: 40, left: 0 }}
+      margin={{ top: 40, right: 100, bottom: 40, left: 60 }}
       axisRight={null}
     />
   </div>
 );
-};
+
 export default BumpChart;

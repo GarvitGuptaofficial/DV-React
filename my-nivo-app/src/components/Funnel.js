@@ -38,16 +38,15 @@ const data=[
       "label": "Solved Five Problems"
     }
   ]
-
-const Funnel = () => {
-  var height_temp = window.innerWidth > 768 ? '800px' : '600px';
-
-  return (
+  var screenWidth = window.screen.width;
+  var screenHeight = window.screen.height;
+  
+const Funnel = () => (
   <div 
   style={{
-    width: "50%",
+    width: (screenWidth*90)/100,
     margin: "0 auto",
-    height: height_temp,
+    height: (screenHeight*35)/100,
     backgroundColor: "transparent",
   }}
   >
@@ -78,5 +77,5 @@ const Funnel = () => {
     />
   </div>
 );
-};
+
 export default Funnel;

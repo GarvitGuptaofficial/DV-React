@@ -89,21 +89,24 @@ const data=[
       ]
     }
   ];
-const MyResponsiveRadialBar = () => {
-  var width_per = window.innerWidth > 500 ? '50%' : '100%';
-  var temp_height = window.innerWidth > 500 ? '800px' : '300px';
-  if (window.innerWidth>500 && window.innerWidth < 840)
-  {
-    temp_height = '300px';
-    width_per='80%';
-  }
-  console.log("OOF",temp_height);
-  return (
+
+  var screenWidth = window.screen.width;
+  var screenHeight = window.screen.height;
+  
+//   dynamic 
+// var chart_width=((screenWidth*40)/100)
+// var chart_height=(chart_width)
+
+// static 
+ var chart_width=450;
+ var chart_height=450;
+
+const MyResponsiveRadialBar = () => (
     <div 
     style={{
-      width: width_per,
+      width: chart_width,
       margin: "0 auto",
-      height: temp_height,
+      height: chart_height,
       backgroundColor: "transparent",
     }}
     >
@@ -111,7 +114,7 @@ const MyResponsiveRadialBar = () => {
     data={data}
     valueFormat=">-.2f"
     padding={0.35}
-    margin={{ top: 40, right: 240, bottom: 40, left: 40 }}
+    margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
     colors={{ scheme: 'category10' }}
     borderWidth={2}
     borderColor={{ theme: 'background' }}
@@ -129,18 +132,20 @@ const MyResponsiveRadialBar = () => {
     transitionMode="innerRadius"
     legends={[
       {
-        anchor: 'right',
+        anchor: 'center',
         direction: 'column',
         justify: false,
-        translateX: +200,
+        translateX: chart_height*0.15,
         translateY: 0,
         itemsSpacing: 6,
         itemDirection: 'left-to-right',
-        itemWidth: 100,
-        itemHeight: 18,
+        itemWidth: chart_width/2,
+        itemHeight: chart_width/50,
         itemTextColor: '#999',
-        symbolSize: 18,
+        symbolSize: chart_width/75,
         symbolShape: 'square',
+        // text size 
+
         effects: [
           {
             on: 'hover',
@@ -154,5 +159,5 @@ const MyResponsiveRadialBar = () => {
   />
     </div>
 );
-};
+
 export default MyResponsiveRadialBar;
