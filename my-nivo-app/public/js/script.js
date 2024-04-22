@@ -130,61 +130,6 @@ var totals_save = [
         title: "hashing",
         value: 194,
         all: 28759
-    },
-    {
-        title: "flows",
-        value: 139,
-        all: 28759
-    },
-    {
-        title: "matrices",
-        value: 115,
-        all: 28759
-    },
-    {
-        title: "fft",
-        value: 89,
-        all: 28759
-    },
-    {
-        title: "graph matchings",
-        value: 88,
-        all: 28759
-    },
-    {
-        title: "string suffix structures",
-        value: 87,
-        all: 28759
-    },
-    {
-        title: "ternary search",
-        value: 52,
-        all: 28759
-    },
-    {
-        title: "meet-in-the-middle",
-        value: 47,
-        all: 28759
-    },
-    {
-        title: "expression parsing",
-        value: 35,
-        all: 28759
-    },
-    {
-        title: "2-sat",
-        value: 30,
-        all: 28759
-    },
-    {
-        title: "chinese remainder theorem",
-        value: 16,
-        all: 28759
-    },
-    {
-        title: "schedules",
-        value: 8,
-        all: 28759
     }
 ];
 // totals has the data for the tags used for plotting pie-chart
@@ -317,61 +262,6 @@ var totals = [
     {
         title: "hashing",
         value: 194,
-        all: 28759
-    },
-    {
-        title: "flows",
-        value: 139,
-        all: 28759
-    },
-    {
-        title: "matrices",
-        value: 115,
-        all: 28759
-    },
-    {
-        title: "fft",
-        value: 89,
-        all: 28759
-    },
-    {
-        title: "graph matchings",
-        value: 88,
-        all: 28759
-    },
-    {
-        title: "string suffix structures",
-        value: 87,
-        all: 28759
-    },
-    {
-        title: "ternary search",
-        value: 52,
-        all: 28759
-    },
-    {
-        title: "meet-in-the-middle",
-        value: 47,
-        all: 28759
-    },
-    {
-        title: "expression parsing",
-        value: 35,
-        all: 28759
-    },
-    {
-        title: "2-sat",
-        value: 30,
-        all: 28759
-    },
-    {
-        title: "chinese remainder theorem",
-        value: 16,
-        all: 28759
-    },
-    {
-        title: "schedules",
-        value: 8,
         all: 28759
     }
 ];
@@ -548,67 +438,7 @@ var div1 = [
         title: "hashing",
         value: 55,
         all: 6135
-    },
-    {
-        title: "interactive",
-        value: 53,
-        all: 6135
-    },
-    {
-        title: "matrices",
-        value: 42,
-        all: 6135
-    },
-    {
-        title: "flows",
-        value: 40,
-        all: 6135
-    },
-    {
-        title: "fft",
-        value: 40,
-        all: 6135
-    },
-    {
-        title: "graph matchings",
-        value: 30,
-        all: 6135
-    },
-    {
-        title: "string suffix structures",
-        value: 28,
-        all: 6135
-    },
-    {
-        title: "ternary search",
-        value: 12,
-        all: 6135
-    },
-    {
-        title: "2-sat",
-        value: 11,
-        all: 6135
-    },
-    {
-        title: "meet-in-the-middle",
-        value: 10,
-        all: 6135
-    },
-    {
-        title: "expression parsing",
-        value: 8,
-        all: 6135
-    },
-    {
-        title: "chinese remainder theorem",
-        value: 7,
-        all: 6135
-    },
-    {
-        title: "schedules",
-        value: 4,
-        all: 6135
-    },
+    }
 ]
 var div2 = [
     {
@@ -725,72 +555,7 @@ var div2 = [
         title: "hashing",
         value: 88,
         all: 12884
-    },
-    {
-        title: "probabilities",
-        value: 86,
-        all: 12884
-    },
-    {
-        title: "interactive",
-        value: 86,
-        all: 12884
-    },
-    {
-        title: "flows",
-        value: 55,
-        all: 12884
-    },
-    {
-        title: "matrices",
-        value: 47,
-        all: 12884
-    },
-    {
-        title: "string suffix structures",
-        value: 40,
-        all: 12884
-    },
-    {
-        title: "fft",
-        value: 39,
-        all: 12884
-    },
-    {
-        title: "graph matchings",
-        value: 28,
-        all: 12884
-    },
-    {
-        title: "ternary search",
-        value: 25,
-        all: 12884
-    },
-    {
-        title: "meet-in-the-middle",
-        value: 22,
-        all: 12884
-    },
-    {
-        title: "2-sat",
-        value: 16,
-        all: 12884
-    },
-    {
-        title: "expression parsing",
-        value: 13,
-        all: 12884
-    },
-    {
-        title: "chinese remainder theorem",
-        value: 7,
-        all: 12884
-    },
-    {
-        title: "schedules",
-        value: 4,
-        all: 12884
-    },
+    }
 ]
 var div3 = [
     {
@@ -892,67 +657,7 @@ var div3 = [
         title: "hashing",
         value: 15,
         all: 2135
-    },
-    {
-        title: "divide and conquer",
-        value: 11,
-        all: 2135
-    },
-    {
-        title: "games",
-        value: 9,
-        all: 2135
-    },
-    {
-        title: "interactive",
-        value: 7,
-        all: 2135
-    },
-    {
-        title: "graph matchings",
-        value: 6,
-        all: 2135
-    },
-    {
-        title: "meet-in-the-middle",
-        value: 6,
-        all: 2135
-    },
-    {
-        title: "flows",
-        value: 4,
-        all: 2135
-    },
-    {
-        title: "probabilities",
-        value: 4,
-        all: 2135
-    },
-    {
-        title: "ternary search",
-        value: 3,
-        all: 2135
-    },
-    {
-        title: "geometry",
-        value: 2,
-        all: 2135
-    },
-    {
-        title: "matrices",
-        value: 2,
-        all: 2135
-    },
-    {
-        title: "2-sat",
-        value: 2,
-        all: 2135
-    },
-    {
-        title: "schedules",
-        value: 1,
-        all: 2135
-    },
+    }
 ]
 var div4 = [
     {
@@ -1064,22 +769,7 @@ var div4 = [
         title: "hashing",
         value: 1,
         all: 350
-    },
-    {
-        title: "flows",
-        value: 1,
-        all: 350
-    },
-    {
-        title: "games",
-        value: 1,
-        all: 350
-    },
-    {
-        title: "interactive",
-        value: 1,
-        all: 350
-    },
+    }
 ]
 
 
@@ -1088,14 +778,21 @@ var temp=d3.select('#donut')    // select the div element with the id 'donut'
 .append('svg')  // append an svg element
 .attr('class', 'pie'); // add a class to the svg element
 
+var pie_chart_height=400;
+var pie_chart_width=650;
+
+
+
 // function to add another chart
 function add_pie() {
     // if the pie_added class is present then remove the svg element
     if (d3.select('.pie_added')) {
         d3.select('.pie_added').remove();
     }
-    var width = 650;
-    var height = 400;
+    // div with class blockHead i present then remove the div element
+    
+    var width = pie_chart_width;
+    var height = pie_chart_height;
     var radius = Math.min(3*width/4, 3*height/4) / 2;
     var donutWidth = 75;
     var color = d3.scaleOrdinal()   // setting the color scale
@@ -1243,8 +940,8 @@ function pie2() // function to draw the pie chart
     d3.select("#donut").selectAll("svg").remove(); // remove the existing svg element
     
     // Setting the dimensions of the pie chart
-    var width = 650;
-    var height = 400;
+    var width = pie_chart_width;
+    var height = pie_chart_height;
     var radius = Math.min(3*width/4, 3*height/4) / 2;
     var donutWidth = 75;
     var color = d3.scaleOrdinal()   // setting the color scale
@@ -1363,6 +1060,22 @@ function pie2() // function to draw the pie chart
     .filter(function(d) {
         return d.data.title === "Others";
     });
+
+    var othersIndex = total_new.findIndex(function(d) {
+        return d.title === "Others";
+    });
+    // Calculate the start and end angles for the "Others" section
+    var othersStartAngle = 0;
+    var othersEndAngle = 0;
+    if (othersIndex !== -1) {
+        // Calculate start angle
+        for (var i = 0; i < othersIndex; i++) {
+            othersStartAngle += pie(total_new)[i].endAngle - pie(total_new)[i].startAngle;
+        }
+        // Calculate end angle
+        othersEndAngle = othersStartAngle + pie(total_new)[othersIndex].endAngle - pie(total_new)[othersIndex].startAngle;
+    }
+
     var labels = svg.selectAll("text")
         .data(pie(total_new))
         .enter()
@@ -1405,17 +1118,27 @@ othersPath.on('click', function() {
     // add style property to div with id donut
     var donutDiv = d3.select('#donut');
     donutDiv.style('display', 'flex')
+    .style('flex-direction', 'row-reverse')
+    .style('width',2*pie_chart_width+100+'px')
         .style('justify-content', 'space-between');
+
+    var blockHead = donutDiv.append("div")
+    .attr("class", "blockHead")
+    .style("width", "100px");
+    blockHead.append("span")
+    .attr("class", "blocktext")
+    .text("Others");
+
+
+    var big_donut=d3.select('#big_donut_id');
+    big_donut.style('width', 2*pie_chart_width+100+'px')
     add_pie();
-});
-        
+})
+    }
 
         
-      
-    }
-    
-    
 };
+
 
 function change_donut_property(){
     if (d3.select('.pie_added')) {
@@ -1423,7 +1146,14 @@ function change_donut_property(){
     }
     var donutDiv = d3.select('#donut');
 donutDiv.style('display', null)
+.style('width', pie_chart_width+'px')
     .style('justify-content', null);
+    if (d3.select('.blockHead')) {
+        d3.select('.blockHead').remove();
+    }
+
+var big_donut=d3.select('#big_donut_id');
+big_donut.style('width', pie_chart_width+'px')
 }
 
 d3.select("button#everyone")
