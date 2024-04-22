@@ -844,6 +844,9 @@ const TimeRangeChart = () => (
             symbolSize: 24
         }
     ]}
+    onClick={(data) => {
+        console.log(data);
+    }}
  />
   </div>
 );
