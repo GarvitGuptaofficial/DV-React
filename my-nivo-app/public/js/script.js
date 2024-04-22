@@ -12,7 +12,7 @@ var totals_save = [
         all: 28759
     },
     {
-        title: "implementation",
+        title: "implement",
         value: 2606,
         all: 28759
     },
@@ -22,12 +22,12 @@ var totals_save = [
         all: 28759
     },
     {
-        title: "constructive algorithms",
+        title: "constructive",
         value: 1642,
         all: 28759
     },
     {
-        title: "data structures",
+        title: "DS",
         value: 1632,
         all: 28759
     },
@@ -72,7 +72,7 @@ var totals_save = [
         all: 28759
     },
     {
-        title: "combinatorics",
+        title: "pnc",
         value: 631,
         all: 28759
     },
@@ -100,37 +100,8 @@ var totals_save = [
         title: "dsu",
         value: 337,
         all: 28759
-    },
-    {
-        title: "divide and conquer",
-        value: 270,
-        all: 28759
-    },
-    {
-        title: "shortest paths",
-        value: 259,
-        all: 28759
-    },
-    {
-        title: "probabilities",
-        value: 226,
-        all: 28759
-    },
-    {
-        title: "interactive",
-        value: 212,
-        all: 28759
-    },
-    {
-        title: "games",
-        value: 203,
-        all: 28759
-    },
-    {
-        title: "hashing",
-        value: 194,
-        all: 28759
     }
+    
 ];
 // totals has the data for the tags used for plotting pie-chart
 var totals = [
@@ -145,7 +116,7 @@ var totals = [
         all: 28759
     },
     {
-        title: "implementation",
+        title: "implement",
         value: 2606,
         all: 28759
     },
@@ -155,12 +126,12 @@ var totals = [
         all: 28759
     },
     {
-        title: "constructive algorithms",
+        title: "constructive",
         value: 1642,
         all: 28759
     },
     {
-        title: "data structures",
+        title: "DS",
         value: 1632,
         all: 28759
     },
@@ -205,7 +176,7 @@ var totals = [
         all: 28759
     },
     {
-        title: "combinatorics",
+        title: "pnc",
         value: 631,
         all: 28759
     },
@@ -232,36 +203,6 @@ var totals = [
     {
         title: "dsu",
         value: 337,
-        all: 28759
-    },
-    {
-        title: "divide and conquer",
-        value: 270,
-        all: 28759
-    },
-    {
-        title: "shortest paths",
-        value: 259,
-        all: 28759
-    },
-    {
-        title: "probabilities",
-        value: 226,
-        all: 28759
-    },
-    {
-        title: "interactive",
-        value: 212,
-        all: 28759
-    },
-    {
-        title: "games",
-        value: 203,
-        all: 28759
-    },
-    {
-        title: "hashing",
-        value: 194,
         all: 28759
     }
 ];
@@ -278,7 +219,7 @@ var totals_small = [
         all: 16950
     },
     {
-        title: "implementation",
+        title: "implement",
         value: 2606,
         all: 16950
     },
@@ -288,12 +229,12 @@ var totals_small = [
         all: 16950
     },
     {
-        title: "constructive algorithms",
+        title: "constructive",
         value: 1642,
         all: 16950
     },
     {
-        title: "data structures",
+        title: "DS",
         value: 1632,
         all: 16950
     },
@@ -335,17 +276,17 @@ var div1 = [
         all: 6135
     },
     {
-        title: "data structures",
+        title: "DS",
         value: 515,
         all: 6135
     },
     {
-        title: "constructive algorithms",
+        title: "constructive",
         value: 418,
         all: 6135
     },
     {
-        title: "implementation",
+        title: "implement",
         value: 352,
         all: 6135
     },
@@ -375,7 +316,7 @@ var div1 = [
         all: 6135
     },
     {
-        title: "combinatorics",
+        title: "pnc",
         value: 205,
         all: 6135
     },
@@ -413,36 +354,11 @@ var div1 = [
         title: "dsu",
         value: 100,
         all: 6135
-    },
-    {
-        title: "divide and conquer",
-        value: 97,
-        all: 6135
-    },
-    {
-        title: "probabilities",
-        value: 90,
-        all: 6135
-    },
-    {
-        title: "shortest paths",
-        value: 75,
-        all: 6135
-    },
-    {
-        title: "games",
-        value: 60,
-        all: 6135
-    },
-    {
-        title: "hashing",
-        value: 55,
-        all: 6135
     }
 ]
 var div2 = [
     {
-        title: "implementation",
+        title: "implement",
         value: 1499,
         all: 12884
     },
@@ -467,12 +383,12 @@ var div2 = [
         all: 12884
     },
     {
-        title: "constructive algorithms",
+        title: "constructive",
         value: 860,
         all: 12884
     },
     {
-        title: "data structures",
+        title: "DS",
         value: 746,
         all: 12884
     },
@@ -512,7 +428,7 @@ var div2 = [
         all: 12884
     },
     {
-        title: "combinatorics",
+        title: "pnc",
         value: 324,
         all: 12884
     },
@@ -530,31 +446,6 @@ var div2 = [
         title: "dsu",
         value: 157,
         all: 12884
-    },
-    {
-        title: "geometry",
-        value: 157,
-        all: 12884
-    },
-    {
-        title: "divide and conquer",
-        value: 119,
-        all: 12884
-    },
-    {
-        title: "shortest paths",
-        value: 110,
-        all: 12884
-    },
-    {
-        title: "games",
-        value: 97,
-        all: 12884
-    },
-    {
-        title: "hashing",
-        value: 88,
-        all: 12884
     }
 ]
 var div3 = [
@@ -569,7 +460,7 @@ var div3 = [
         all: 2135
     },
     {
-        title: "implementation",
+        title: "implement",
         value: 223,
         all: 2135
     },
@@ -584,7 +475,7 @@ var div3 = [
         all: 2135
     },
     {
-        title: "constructive algorithms",
+        title: "algorithms",
         value: 128,
         all: 2135
     },
@@ -594,7 +485,7 @@ var div3 = [
         all: 2135
     },
     {
-        title: "data structures",
+        title: "DS",
         value: 120,
         all: 2135
     },
@@ -634,7 +525,7 @@ var div3 = [
         all: 2135
     },
     {
-        title: "combinatorics",
+        title: "pnc",
         value: 32,
         all: 2135
     },
@@ -652,16 +543,11 @@ var div3 = [
         title: "dsu",
         value: 27,
         all: 2135
-    },
-    {
-        title: "hashing",
-        value: 15,
-        all: 2135
     }
 ]
 var div4 = [
     {
-        title: "implementation",
+        title: "implement",
         value: 78,
         all: 350
     },
@@ -686,7 +572,7 @@ var div4 = [
         all: 350
     },
     {
-        title: "data structures",
+        title: "DS",
         value: 21,
         all: 350
     },
@@ -726,7 +612,7 @@ var div4 = [
         all: 350
     },
     {
-        title: "constructive algorithms",
+        title: "Constructive",
         value: 6,
         all: 350
     },
@@ -749,26 +635,6 @@ var div4 = [
         title: "dsu",
         value: 3,
         all: 350
-    },
-    {
-        title: "shortest paths",
-        value: 2,
-        all: 350
-    },
-    {
-        title: "divide and conquer",
-        value: 2,
-        all: 350
-    },
-    {
-        title: "combinatorics",
-        value: 2,
-        all: 350
-    },
-    {
-        title: "hashing",
-        value: 1,
-        all: 350
     }
 ]
 
@@ -781,9 +647,15 @@ var temp=d3.select('#donut')    // select the div element with the id 'donut'
 var pie_chart_height=400;
 var pie_chart_width=650;
 
+var colors_array = [
+    '#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd',
+    '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf',
+    '#aec7e8', '#ffbb78', '#98df8a', '#ff9896', '#c5b0d5',
+    '#c49c94', '#f7b6d2', '#c7c7c7', '#dbdb8d', '#9edae5',
+    '#7b94c9', '#ff9896', '#8c6d31', '#fdae6b', '#1f77b4'
+];
 
 
-// function to add another chart
 function add_pie() {
     // if the pie_added class is present then remove the svg element
     if (d3.select('.pie_added')) {
@@ -854,7 +726,9 @@ function add_pie() {
     .enter()
     .append('path')
     .attr('d', arc)
-    .attr('fill', '#5A39AC') // constant color
+    .attr('fill', function(d, i) {
+        return colors_array[(i+group_data_length)%colors_array.length] // Use color scale to get color based on index
+    })
     .attr('stroke', '#fff') // border color
     .attr('stroke-width', 0.5) // border width
 
@@ -1016,7 +890,9 @@ function pie2() // function to draw the pie chart
     .enter()
     .append('path')
     .attr('d', arc)
-    .attr('fill', '#5A39AC') // constant color
+    .attr('fill', function(d, i) {
+        return colors_array[i%colors_array.length] // Use color scale to get color based on index
+    })
     .attr('stroke', '#fff') // border color
     .attr('stroke-width', 0.5) // border width
         .attr('transform', 'translate(0, 0)')
@@ -1229,7 +1105,6 @@ pie2();
 const svg = d3.select("#my_dataviz");
 // var screenWidth = window.innerWidth;
 var screenWidth = window.screen.width;
-//   var screenHeight = window.screen.height;
 console.log("SCREEN",screenWidth);
     // var svg = document.getElementById('my_dataviz');
     var svgWidth, svgHeight;
