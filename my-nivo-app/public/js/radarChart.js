@@ -52,10 +52,15 @@ function RadarChart(id, data, options, names, contestDuration) {
   d3.select(id).select("svg").remove();
 
   // Initiate the radar chart SVG
+  var out_screen_width=1000;
+  if (window.screen.width < 900)
+  {
+    out_screen_width=window.screen.width;
+  }
   var svg = d3
     .select(id)
     .append("svg")
-    .attr("width", 1000)
+    .attr("width", out_screen_width)
     .attr("height", cfg.h + cfg.margin.top + cfg.margin.bottom)
     .attr("class", "radar" + id);
   // Append a g element
@@ -339,11 +344,32 @@ function RadarChart(id, data, options, names, contestDuration) {
       }
     });
   } //wrap
-
   var names_list = names.split(",");
+  var durationy=130;
+  var legendx=cfg.w - 18 - 10 - 60 - 18 - 5;
+  var legendxtext=cfg.w - 24;
+  var legendxsymbol=cfg.w - 18;
+  var legendy=-10 + 2 * (4 - names_list.length);
+// var temping_height=window.screen.height;
+// var margin_left_temp = 100;
+
+  if (window.screen.width < 900)
+  {
+    durationy=200;
+    legendx=cfg.w - 18 - 10 - 18 - 5;
+    legendxtext=cfg.w - 24 + 60;
+    legendxsymbol=cfg.w - 18+60;
+  }
+  if (window.screen.width < 600)
+  {
+    legendx=cfg.w - 18 - 10 - 18 - 5 - 20;
+    legendxtext=cfg.w - 24 + 60 - 20;
+    legendxsymbol=cfg.w - 18+60 - 20;
+    durationy=150;
+  }
   var legendBox = g
     .append("rect")
-    .attr("x", cfg.w - 18 - 10 - 60 - 18 - 5) // Adjust x-coordinate for positioning
+    .attr("x", legendx) // Adjust x-coordinate for positioning
     .attr("y", -10 + 2 * (4 - names_list.length)) // Adjust y-coordinate for positioning
     .attr("width", 130) // Adjust width based on your legend size
     .attr("height", names_list.length * 25) // Adjust height based on your legend size
@@ -354,7 +380,7 @@ function RadarChart(id, data, options, names, contestDuration) {
     .append("text")
     .attr("class", "contestDuration")
     .attr("x", cfg.w + 18 + 10)
-    .attr("y", 130)
+    .attr("y", durationy)
     .style("text-anchor", "end")
     .style("font-weight", "bold")
     .text(
@@ -366,7 +392,7 @@ function RadarChart(id, data, options, names, contestDuration) {
     .append("rect")
     .attr("class", "textBoxBackground")
     .attr("x", cfg.w - 200 - 15 - 36) // Adjust the x-coordinate to position the rectangle properly
-    .attr("y", 130 - 15) // Adjust the y-coordinate to position the rectangle properly
+    .attr("y", durationy - 15) // Adjust the y-coordinate to position the rectangle properly
     .attr("width", 300) // Adjust the width to fit the text box
     .attr("height", 20) // Adjust the height to fit the text box
     .style("fill", "rgba(0, 0, 220, 0.3)"); // Blue color with opacity 0.5
@@ -383,7 +409,7 @@ function RadarChart(id, data, options, names, contestDuration) {
   // Add colored squares to legend2
   legend2
     .append("rect")
-    .attr("x", cfg.w - 18)
+    .attr("x", legendxsymbol)
     .attr("width", 18)
     .attr("height", 18)
     .style("fill", function (d, i) {
@@ -393,7 +419,7 @@ function RadarChart(id, data, options, names, contestDuration) {
   // Add text labels to legend2
   legend2
     .append("text")
-    .attr("x", cfg.w - 24)
+    .attr("x", legendxtext)
     .attr("y", 9)
     .attr("dy", ".35em")
     .style("text-anchor", "end")
@@ -408,14 +434,32 @@ function RadarChart(id, data, options, names, contestDuration) {
 //     height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
 
 // var color = d3.scaleOrdinal().range(["#EDC951", "#CC333F", "#00A0B0", "#00DC00","#9370DB"]);
+// var screenWidth = window.screen.width;
+// var screenHeight = window.screen.height;
+// console.log("HOPE",screenWidth);
+var temping_width=window.screen.width;
+var temping_height=window.screen.height;
+var margin_left_temp = 100;
 
+if (window.screen.width < 900)
+{
+  temping_width=500;
+  temping_height=500;
+  margin_left_temp =50;
+}
+if (window.screen.width < 600)
+{
+  temping_height=400;
+  temping_width=400;
+  margin_left_temp = 40;
+}
 var radarChartOptions = {
-  w: Math.min(700, window.innerWidth - 10) - 100 - 100,
+  w: Math.min(700, temping_width) - 100 - 100,
   h: (height = Math.min(
-    Math.min(700, window.innerWidth - 10) - 100 - 100,
-    window.innerHeight - 100 - 100 - 20
+    Math.min(700, temping_height) - 100 - 100,
+    window.screen.height - 100 - 100 - 20
   )),
-  margin: { top: 100, right: 100, bottom: 100, left: 100 },
+  margin: { top: 100, right: 100, bottom: 100, left: margin_left_temp },
   maxValue: 0.5,
   levels: 5,
   roundStrokes: true,
