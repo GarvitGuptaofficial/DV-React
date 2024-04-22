@@ -79,7 +79,10 @@ The code follows a common pattern for creating D3.js visualizations. It sets up 
     console.log("Pause function called");
     // Add your pause functionality here
   }
-
+  new_left_margin=250;
+  if (window.screen.width < 900) {
+    new_left_margin=0;
+  }
   const config = {
     /* 
      contains the basic settings for starting the visualisation
@@ -116,7 +119,7 @@ The code follows a common pattern for creating D3.js visualizations. It sets up 
     deformat: function (val, postfix) {
       return Number(val.replace(postfix, "").replace(/\,/g, ""));
     },
-    left_margin: 250,
+    left_margin: new_left_margin,
     right_margin: 150,
     top_margin: 180,
     bottom_margin: 0,
@@ -375,8 +378,22 @@ The code follows a common pattern for creating D3.js visualizations. It sets up 
     const svg = d3.select(".RaceChart");
 
     // Get the width and height of the SVG element
-    const width = svg.attr("width");
-    const height = svg.attr("height");
+    // var width
+    var width = svg.attr("width");
+    var height = svg.attr("height");
+    if (window.screen.width < 900) {
+      svg.attr("width", 600);
+      svg.attr("height", 800);
+      width=600;
+      height=800;
+    }
+    if (window.screen.width < 600) {
+      svg.attr("width", 400);
+      svg.attr("height", 1000);
+      width=400;
+      height=1000;
+    }
+
 
     // Calculate the inner width and height of the SVG element after accounting for margins
     const innerWidth = width - margin.left - margin.right;
