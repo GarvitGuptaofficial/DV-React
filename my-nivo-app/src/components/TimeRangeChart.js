@@ -2517,80 +2517,67 @@ const data=[
 ]
 
 const TimeRangeChart = () => (
-  <div style={{ width: '95%', height: '500px', backgroundColor: 'transparent' }}>
-    <ResponsiveTimeRange
-     data={data}
-     from="2023-01-01"
-     to="2023-12-30"
-     emptyColor="#eeeeee"
-     colors={[  '#fbd1ca','#f8a89b', '#f57d69', '#f26149', '#f03e21' ]}
-     minValue={0}
-     maxValue={20}
-     margin={{ top: 40, right: 40, bottom: 100, left: 40 }}
-     monthLegendOffset={14}
-     weekdayLegendOffset={77}
-     dayRadius={8}
-     dayBorderColor="#e7dada"
-     tooltipFormat={value => Number(value).toLocaleString('en-US', {minimumFractionDigits: 2}) + '$'}
-    //  tooltip={e=>{}}
-    tooltip={({ day, value, color, verdicts }) => (
-        <div>
-   <div
-          style={{
-            display: 'flex',
-            background: 'white',
-            alignItems: 'center',
-            borderRadius: '2px',
-            boxShadow: '0 1px 2px rgba(0, 0, 0, 0.25)',
-            padding: '5px 9px',
-          }}
-        >
-          <span
-            style={{
-              width: 12,
-              minWidth: 12,
-              height: 140,
-              minHeight: 12,
-              backgroundColor: color,
-            //   display: 'block',
-              marginRight: 7,
-            }}
-          />
-          <span>
-            {day} : <strong>{value}</strong>
-            <br />
-            AC: {verdicts.OK||0}
-            <br />
-            WA: {verdicts.WRONG_ANSWER||0}
-            <br />
-            RTE: {verdicts.RUNTIME_ERROR||0}
-            <br />
-            TLE: {verdicts.TIME_LIMIT_EXCEEDED||0}
-            <br />
-            CE: {verdicts.COMPILATION_ERROR||0}
-            <br />
-
-          </span>
-
-          
+    <div style={{ width: '95%', height: '500px', backgroundColor: 'transparent' }}>
+      <ResponsiveTimeRange
+       data={data}
+       from="2023-01-01"
+       to="2023-12-30"
+       emptyColor="#eeeeee"
+       colors={['#fbd1ca', '#f8a89b', '#f57d69', '#f26149', '#f03e21']}
+       minValue={0}
+       maxValue={20}
+       margin={{ top: 40, right: 40, bottom: 100, left: 40 }}
+       monthLegendOffset={14}
+       weekdayLegendOffset={77}
+       dayRadius={8}
+       dayBorderColor="#e7dada"
+       tooltip={({ day, value, color, verdicts }) => (
           <div>
-            </div>  
-        </div>
-        
-
-            
-        </div>
-
-
-        
-      )}
-    //  tooltip={({ day, value, color }) => (
-    //     // // <strong style={{ color }}>
-    //     //  <div>   {day}: {value}</div>
-    //     // // </strong>
-    // )}
-     legends={[
-        {
+            <div
+              style={{
+                display: 'flex',
+                background: 'white',
+                alignItems: 'center',
+                borderRadius: '2px',
+                boxShadow: '0 1px 2px rgba(0, 0, 0, 0.25)',
+                padding: '5px 9px',
+              }}
+            >
+              <span
+                style={{
+                  width: 12,
+                  minWidth: 12,
+                  height: 270,
+                  minHeight: 12,
+                  backgroundColor: color,
+                  marginRight: 7,
+                }}
+              />
+              <span>
+                {day} : <strong>{value}</strong>
+                <br />
+                <div>
+                  AC: <div className="bar" style={{ width: `${(verdicts.OK || 0) * 8}px`, backgroundColor: '#65a637' }}>{verdicts.OK || 0}</div>
+                </div>
+                <div>
+                  WA: <div className="bar" style={{ width: `${(verdicts.WRONG_ANSWER || 0) * 8}px`, backgroundColor: '#ff0000' }}>{verdicts.WRONG_ANSWER || 0}</div>
+                </div>
+                <div>
+                  RTE: <div className="bar" style={{ width: `${(verdicts.RUNTIME_ERROR || 0) * 8}px`, backgroundColor: '#9da6a8' }}>{verdicts.RUNTIME_ERROR || 0}</div>
+                </div>
+                <div>
+                  TLE: <div className="bar" style={{ width: `${(verdicts.TIME_LIMIT_EXCEEDED || 0) * 8}px`, backgroundColor: '#2d8ed2' }}>{verdicts.TIME_LIMIT_EXCEEDED || 0}</div>
+                </div>
+                <div>
+                  CE: <div className="bar" style={{ width: `${(verdicts.COMPILATION_ERROR || 0) * 8}px`, backgroundColor: '#b0dd3f' }}>{verdicts.COMPILATION_ERROR || 0}</div>
+                </div>
+              </span>
+             
+            </div>
+          </div>
+        )}
+       legends={[
+          {
             anchor: 'bottom',
             direction: 'row',
             justify: false,
@@ -2602,13 +2589,13 @@ const TimeRangeChart = () => (
             translateX: 0,
             translateY: -90,
             symbolSize: 24
-        }
-    ]}
-    onClick={(data) => {
-        console.log(data);
-    }}
- />
-  </div>
-);
-
+          }
+       ]}
+       onClick={(data) => {
+          console.log(data);
+       }}
+      />
+    </div>
+  );
+  
 export default TimeRangeChart;
