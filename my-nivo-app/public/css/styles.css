@@ -39,6 +39,21 @@ align-items: center;
 margin-top: 180px;
   margin-left: 20px;
 }
+@media (max-width: 900px) {
+  .blockHead {
+    margin-top: 20px;
+    margin-bottom : 20px;
+      margin-left: 36vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .blockHead {
+    margin-top: 20px;
+    margin-bottom : 20px;
+      margin-left: 31vw;
+  }
+}
 
 .blocktext {
   color: white;

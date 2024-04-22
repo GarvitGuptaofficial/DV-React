@@ -685,16 +685,16 @@ The code follows a common pattern for creating D3.js visualizations. It sets up 
       }
 
       // Update x and y axes with transition
-      xAxisG
-        .transition()
-        .duration(baseTime * interval_time)
-        .ease(d3.easeLinear)
-        .call(xAxis);
-      yAxisG
-        .transition()
-        .duration(baseTime * interval_time)
-        .ease(d3.easeLinear)
-        .call(yAxis);
+      // xAxisG
+      //   .transition()
+      //   .duration(baseTime * interval_time)
+      //   .ease(d3.easeLinear)
+      //   .call(xAxis);
+      // yAxisG
+      //   .transition()
+      //   .duration(baseTime * interval_time)
+      //   .ease(d3.easeLinear)
+      //   .call(yAxis);
 
       // Remove ticks from yAxisG and xAxisG if specified
       yAxisG.selectAll(".tick").remove();

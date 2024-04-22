@@ -57,9 +57,9 @@ body {
 }
 
 
-.domain {
+/* .domain {
     display: none;
-}
+} */
 
 .tick line {
     stroke: #C0C0BB;

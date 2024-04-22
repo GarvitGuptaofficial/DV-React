@@ -644,8 +644,18 @@ var temp=d3.select('#donut')    // select the div element with the id 'donut'
 .append('svg')  // append an svg element
 .attr('class', 'pie'); // add a class to the svg element
 
-var pie_chart_height=400;
-var pie_chart_width=650;
+var pie_chart_width;
+var pie_chart_height;
+if (window.screen.width < 600) // if the screen width is less than 900 then set the width and height of the svg element
+{
+    pie_chart_height=250;
+    pie_chart_width=450;
+}
+else
+{
+    pie_chart_height=400;
+    pie_chart_width=650;
+}
 
 var colors_array = [
     '#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd',
@@ -679,7 +689,16 @@ function add_pie() {
         .append('g')
         .attr('transform', 'translate(' + (width / 2 -40) +
             ',' + (height/2) + ')');
-    
+    if (window.screen.width < 900)
+    {
+        svg.attr('transform', 'translate(' + (width / 2 + 10) +
+            ',' + (height/2+20) + ')')
+    }
+    if (window.screen.width < 600)
+    {
+        svg.attr('transform', 'translate(' + (width / 2 -40) +
+            ',' + (height/2 + 20) + ')')
+    }
             // setting the arc and pie
             function midAngle(d){
                 return d.startAngle + (d.endAngle - d.startAngle)/2;
@@ -783,6 +802,10 @@ function add_pie() {
         .text(function(d) {
             return d.data.title + "-" + d.value; // Adjust this based on your data structure
         });
+        if (window.screen.width < 600)
+        {
+            labels.attr("font-size", "10px");
+        }
         var lines = svg.selectAll("line")
     .data(pie(groupedData))
     .enter()
@@ -827,9 +850,24 @@ function pie2() // function to draw the pie chart
         .attr('class', 'pie')
         .attr('width', width)
         .attr('height', height)
-        .append('g')
+        .append('g');
+    if (window.screen.width >= 600 && window.screen.width < 900)
+    {
+        svg
+        .attr('transform', 'translate(' + (width / 2 + 10) +
+            ',' + (height / 2) + ')');
+    }
+    if (window.screen.width < 600)
+    {
+        svg.attr('transform', 'translate(' + (width / 2 -40) +
+            ',' + (height/2 + 20) + ')')
+    }
+    else
+    {
+        svg
         .attr('transform', 'translate(' + (width / 2-20) +
             ',' + (height / 2) + ')');
+    }
     
             // setting the arc and pie   
             function midAngle(d){
@@ -968,6 +1006,10 @@ function pie2() // function to draw the pie chart
         .text(function(d) {
             return d.data.title + "-" + d.value; // Adjust this based on your data structure
         });
+        if (window.screen.width < 600)
+        {
+            labels.attr("font-size", "10px");
+        }
         var lines = svg.selectAll("line")
     .data(pie(total_new))
     .enter()
@@ -996,21 +1038,38 @@ othersPath.on('click', function() {
     }
     // add style property to div with id donut
     var donutDiv = d3.select('#donut');
-    donutDiv.style('display', 'flex')
-    .style('flex-direction', 'row-reverse')
-    .style('width',2*pie_chart_width+100+'px')
-        .style('justify-content', 'space-between');
+    var blockHead;
+    if (window.screen.width>900)
+    {
+        donutDiv.style('display', 'flex')
+        .style('flex-direction', 'row-reverse')
+        .style('width',2*pie_chart_width+100+'px')
+            .style('justify-content', 'space-between');
+        blockHead = donutDiv.append("div")
+        .attr("class", "blockHead")
+        .style("width", "100px");
+        blockHead.append("span")
+        .attr("class", "blocktext")
+        .text("Others");
+        var big_donut=d3.select('#big_donut_id');
+        big_donut.style('width', 2*pie_chart_width+100+'px')
 
-    var blockHead = donutDiv.append("div")
-    .attr("class", "blockHead")
-    .style("width", "100px");
-    blockHead.append("span")
-    .attr("class", "blocktext")
-    .text("Others");
+    }
+    else if (window.screen.width < 900)
+    {
+        donutDiv
+        // .style('width',2*pie_chart_width+100+'px')
+            .style('justify-content', 'space-between');
+        blockHead = donutDiv.append("div")
+        .attr("class", "blockHead")
+        .style("width", "100px")
+        .style("transform", "rotate(-90deg)"); // Rotate the block head
+        blockHead.append("span")
+            .attr("class", "blocktext")
+            .text("Others");    
+    }
 
 
-    var big_donut=d3.select('#big_donut_id');
-    big_donut.style('width', 2*pie_chart_width+100+'px')
     add_pie();
 })
     }
