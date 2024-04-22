@@ -1227,7 +1227,9 @@ pie2();
 // }
 
 const svg = d3.select("#my_dataviz");
-var screenWidth = window.innerWidth;
+// var screenWidth = window.innerWidth;
+var screenWidth = window.screen.width;
+//   var screenHeight = window.screen.height;
 console.log("SCREEN",screenWidth);
     // var svg = document.getElementById('my_dataviz');
     var svgWidth, svgHeight;
